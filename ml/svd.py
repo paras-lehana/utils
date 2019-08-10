@@ -1,3 +1,5 @@
+#Colab: https://colab.research.google.com/drive/1z-p9F8YmAnLrAGaNQ-lkZpHTqbwGLvSy
+
 import numpy as np
 from numpy import linalg as la
 
