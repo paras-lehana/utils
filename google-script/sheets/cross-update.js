@@ -8,7 +8,7 @@
 
 
 
-function UpdateYesNo() {
+function crossUpdate() {
 
     // Names of source and destination sheets
     const sourceSheet = 'Sheet9';
