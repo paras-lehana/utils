@@ -22,8 +22,8 @@ Last login: Sat Jan 03 11:45:00 2009 from 04.01.202.200
 
 ## Instructions
 
-1. Copy the imlogin() function in imlogin.sh file and paste it into your ~/.bashrc or bash_aliases or bash_functions.
-2. In the imlogin() function, there is a `CONFIG_FILE` constant that determines the path of the credentials file ip-cred.json. Change the path if required.
+1. Copy the `imlogin()` function in [imlogin.sh](https://github.com/paras-lehana/utils/blob/master/linux/bash/login/imlogin.sh) file and paste it into your ~/.bashrc or bash_aliases or bash_functions.
+2. In the `imlogin()` function, there is a `CONFIG_FILE` constant that determines the path of the credentials file ip-cred.json. Change the path if required.
 3. Make a file named ip-cred.json in the path given in `CONFIG_FILE`. A sample [file](https://github.com/paras-lehana/utils/blob/master/linux/bash/login/ip-cred.json) is also provided.
 4. Add your login details in the `ip-cred.json` file.
 5. Restart your terminal or run `. ~/.bashrc`. 
