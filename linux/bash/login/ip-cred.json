@@ -1,0 +1,36 @@
+{
+    "server-alias": {
+        "desc": "This is a sample entry explaining the configuration. server-alias is what you will use to login by imlogin server-alias or imlogin user@server-alias, desc is the description for your server, name is the descriptive name of your server or the hostname that can be different from alias, put the server IP in ip, the cred key contains pairs of username and their passwords, you can give a default_user that will be logged in if you skip giving user, env is the enivorment of the server. Only ip and one cred pair is mandatory.",
+        "name": "Descriptive Name of your server or simply the hostname",
+        "ip": "IP of your server",
+        "cred": {
+            "user": "password-for-user",
+            "user1": "password-for-user1"
+        },
+        "default_user": "user1",
+        "env": ["dev", "stg"]
+    },
+  
+    "autosuggest-dev": {
+        "desc": "Auto-Suggest Development and Stage Server for Suggest API and Solr.",
+        "name": "dev-autosuggest",
+        "ip": "11.04.199.600",
+        "cred": {
+            "suggest": "password-for-suggest-user",
+            "paras": "password-for-paras-user"
+        },
+        "default_user": "paras",
+        "env": ["dev", "stg"]
+    },
+  
+    "autosuggest-live": {  
+        "ip": "04.01.199.500",
+        "cred": {
+            "suggest": "password-for-suggest-user",
+            "paras": "password-for-paras-user"
+        },
+        "default_user": "suggest",
+        "env": ["prod"]
+    }
+  
+}
