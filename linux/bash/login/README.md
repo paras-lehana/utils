@@ -9,7 +9,7 @@ imlogin my-server
 ```
 
 ```
-Logging to 03.01.200.900 with credentials satoshi:satoshispassword ...
+Logging to 03.01.200.900 with user: satoshi ...
 
 Last login: Sat Jan 03 11:45:00 2009 from 04.01.202.200
 [satoshi@my-server ~]$ 
@@ -98,6 +98,18 @@ imlogin admin@paras-server
 You can also skip the username if you want to login with the `default_user` (if given):
 ```
 imlogin paras-server
+```
+
+```
+Logging to 03.01.200.900 with user: paras ...
+
+Last login: Sat Jan 03 11:45:00 2009 from 04.01.202.200
+[paras@server-hostname-can-be-different-from-server-alias ~]$ 
+```
+
+If you want the password to be visible in the output of command then you can pass `--show-cred` argument in the command:
+```sh
+imlogin paras-server --show-cred
 ```
 
 ```
