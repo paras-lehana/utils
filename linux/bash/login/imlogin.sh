@@ -28,6 +28,11 @@ function imlogin() {
         return;
     fi
 
+    SHOW_CRED=
+    if [ "$2" = "--show-cred" ]; then
+        SHOW_CRED=1
+    fi
+
     IFS='@';
     read -ra CRED <<< "$1";
     IFS=' ';
@@ -48,9 +53,13 @@ function imlogin() {
     IP=`jq -r --arg server "$SERVER_NAME" '.[$server].ip' $CONFIG_FILE`;
     PASSWORD=`jq -r --arg server "$SERVER_NAME" --arg username "$USER_NAME" '.[$server].cred[$username]' $CONFIG_FILE`;
 
-    echo -e "\nLogging to $IP with credentials $USER_NAME:$PASSWORD ...\n";
+    if [ $SHOW_CRED ]; then
+        echo -e "\nLogging to $IP with credentials $USER_NAME:$PASSWORD ...\n"
 
-    echo -e "sshpass -p $PASSWORD ssh $USER_NAME@$IP\n\n";
+        echo -e "sshpass -p $PASSWORD ssh $USER_NAME@$IP\n\n"
+    else
+        echo -e "\nLogging to $IP with user: $USER_NAME ...\n"
+    fi
 
     sshpass -p $PASSWORD ssh $USER_NAME@$IP;
 
