@@ -7,7 +7,9 @@ print('\n\n---------  Maintenance Splitter  ---------\n\n');
 UNIT_RATE = 7.70;   # Cost per Electricity Unit
 print('Grid Unit Rate: ₹ ', UNIT_RATE, '\n');
 
-rooms = [ ['Paras'], ['Ayushmaan'], ['Abhinav'] ];    # List of Rooms with nested list of members in each room
+rooms = [ ['Paras'], ['Manik'], ['Abhinav', 'Shubham'], ['Neha'] ];    # List of Rooms with nested list of members in each room
+
+extras = { "EV Grid": ['Paras'] }
 
 print('Rooms: ', end='');
 [print('| ' + ', '.join(members) + ' |', end='') for members in rooms];
@@ -20,6 +22,8 @@ bill = {}; # Bill of each flat member
 
 total_ac_bill = 0; # Total AC Cost consumed by flat
 
+total_extra_bill = 0;
+
 
 for members in rooms: #runs for each room
 
@@ -29,19 +33,33 @@ for members in rooms: #runs for each room
 
     room_ac_bill = room_ac_units * UNIT_RATE;    #AC Cost consumed by the room
     print('Consumed AC Units: {} Units -> ₹ {}'.format(room_ac_units, room_ac_bill));
-
+    print('\n');
 
     for member in members:  #runs for each member in the room
         bill[member] = math.ceil(room_ac_bill/len(members)); #AC bill is divided by room occupancy; The dict bill contains the member_name -> amount_to_be_paid  
     
     total_ac_bill += room_ac_bill;
+    
+for extra, members in extras.items():
+    if len(members):
+        for member in members:
+            member_extra_units = input('Extra Units for {} of {}: '.format(extra, member))
+            member_extra_bill = float(member_extra_units) * UNIT_RATE
+            bill[member] += member_extra_bill
+            
+            print('Consumed Extra Units: {} Units -> ₹ {}'.format(member_extra_units, member_extra_bill));
+            print('\n');
+            
+            total_extra_bill += member_extra_bill
 
 
-common_bill = (current_bill - total_ac_bill); #Common Bill (without AC) is divided equally among flat members
+
+common_bill = (current_bill - total_ac_bill - total_extra_bill); #Common Bill (without AC) is divided equally among flat members
 
 print ('\nCurrent Bill: ₹', current_bill);
 print ('Common Bill: ₹ {} (₹ {} per head)'.format(common_bill, common_bill/len(bill)))
 print ('AC Bill: ₹', total_ac_bill);
+print ('Extra Bill: ₹', total_extra_bill);
 
 print ('\n\nIndividual Bills:\n');
 round_current_bill = 0
@@ -49,7 +67,7 @@ round_current_bill = 0
 for name, ac_amount in bill.items():
 
     member_amount = ac_amount + common_bill/len(bill);    #Common Bill share added to each member
-    print ('{}: ₹ {} (including ₹ {} AC)'.format(name, math.ceil(member_amount), ac_amount)); # Outputting member name and amount to be paid
+    print ('{}: ₹ {} (including ₹ {} AC & Extras)'.format(name, math.ceil(member_amount), ac_amount)); # Outputting member name and amount to be paid
     round_current_bill += member_amount
 
 print('\n\nRounded Off Total Bill: ', round_current_bill,'\n\n')
