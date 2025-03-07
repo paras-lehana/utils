@@ -7,7 +7,7 @@ print('\n\n---------  Maintenance Splitter  ---------\n\n');
 UNIT_RATE = 7.70;   # Cost per Electricity Unit
 print('Grid Unit Rate: ₹ ', UNIT_RATE, '\n');
 
-rooms = [ ['Paras'], ['Manik'], ['Abhinav', 'Shubham'], ['Neha'] ];    # List of Rooms with nested list of members in each room
+rooms = [ ['Paras'], ['Manik'], ['Amit'], ['Neha'] ];    # List of Rooms with nested list of members in each room
 
 extras = { "EV Grid": ['Paras'] }
 
